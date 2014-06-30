@@ -1,2 +1,6 @@
 /build
 *.iml
+
+# Generated files
+bin/
+gen/
