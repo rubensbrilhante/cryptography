@@ -65,10 +65,7 @@ public class Main extends Activity implements View.OnClickListener {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -114,7 +111,7 @@ public class Main extends Activity implements View.OnClickListener {
         return AES.decrypt(decode, getKey());
     }
 
-    private byte[] getKey() throws UnsupportedEncodingException {
+    private byte[] getKey()  {
         SharedPreferences preferences = getSharedPreferences(PREFERENCE, MODE_PRIVATE);
         String string = preferences.getString(KEY, "");
         return Base64.decode(string, Base64.NO_PADDING);
